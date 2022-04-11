@@ -9,6 +9,11 @@ export class Negociacao {
         this._valor = valor;
     }
 
+    adiciona(){
+
+        const negociacao = new Negociacao()
+    }
+
     get data() {
         return this._data;
     }
