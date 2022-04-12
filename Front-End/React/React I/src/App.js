@@ -1,44 +1,52 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
+import Tabela from './Tabela';
+
+class App extends Component {
+  
+  state = {
+    autores :  [
+      {
+        nome: 'Paulo',
+        livro: 'React',
+        preco: '1000'
+      },
+      {
+        nome: 'Daniel',
+        livro: 'Java',
+        preco: '99'
+      },
+      {
+        nome: 'Marcos',
+        livro: 'Design',
+        preco: '150'
+      },
+      {
+        nome: 'Bruno',
+        livro: 'DevOps',
+        preco: '100'
+      }
+    ],
+  }
+    
+removeAutor = index => {
+
+  const { autores } = this.state;
+  
+  this.setState({
+    autores : autores.filter((autor, posAtual) => {
+      return posAtual !== index;
+    }),
+  })
+  
+}
+
+  render() {
     return (
-        <div className="App">
-            <table>
-                <thread>
-                    <tr>
-                        <th>Autores</th>
-                        <th>Livros</th>
-                        <th>Preços</th>
-                        <th>Remover</th>
-                    </tr>
-                </thread>
-                <tbody>
-                    <tr>
-                        <th>Paulo</th>
-                        <th>React</th>
-                        <th>1000</th>
-                        <td><button>Remover</button></td>
-                    </tr>
-                    <tr>
-                        <th>Nico</th>
-                        <th>React</th>
-                        <th>1000</th>
-                        <td><button>Remover</button></td>
-
-                    </tr>
-                    <tr>
-                        <th>Daniel</th>
-                        <th>React</th>
-                        <th>1000</th>
-                        <td><button>Remover</button></td>
-
-                    </tr>
-                </tbody>
-
-            </table>
-        </div>
-    )
+      <Tabela autores={this.state.autores} removeAutor = { this.removeAutor }/>  
+    );
+  }
 }
 
 export default App;
