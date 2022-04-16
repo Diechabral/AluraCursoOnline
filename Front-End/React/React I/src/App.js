@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
+import 'materialize-css/dist/css/materialize.min.css';
 
 import Tabela from './Tabela';
+import Formulario from './Formulario';
+
 
 class App extends Component {
   
@@ -42,9 +44,15 @@ removeAutor = index => {
   
 }
 
+escutadorDeSubmit = autor => {
+  this.setState({ autores: [...this.state.autores, autor] });
+}
   render() {
     return (
-      <Tabela autores={this.state.autores} removeAutor = { this.removeAutor }/>  
+      <div>
+      <Tabela autores={this.state.autores} removeAutor = { this.removeAutor }/> 
+      <Formulario escutadorDeSubmit={this.escutadorDeSubmit}/>
+      </div> 
     );
   }
 }
